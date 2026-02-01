@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="blue_tringle">
+    <!-- Modelin sabit olması (düşmemesi) için static true -->
+    <static>true</static>
+    <link name="link">
+      <!-- Modelin dünya içindeki varsayılan konumu ve yönü -->
+      <pose>0 0 0 0 0 0</pose>
+      <!-- Çarpışma (physics) şekli tanımı -->
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://blue_triangle/meshes/ucgen.obj</uri>
+            <scale>0.07 0.07 0.04</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <!-- Görsel (render) şekli tanımı -->
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://blue_triangle/meshes/ucgen.obj</uri>
+            <scale>0.07 0.07 0.04</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <!-- Gazebo'nun standart malzeme kütüphanesini kullan -->
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
