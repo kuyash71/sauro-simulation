@@ -98,7 +98,7 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 
 3. **Setup simulation environment:**
    - Follow one of the guides in `docs/setup/`
-     ( 24.04LTS Version of Sİmulation is default )
+     ( Simulation is built on 24.04 LTS )
    - Configure Gazebo models and worlds
 
 ## Usage
@@ -172,5 +172,6 @@ MIT
 ## Support
 
 For questions and support, please refer to the documentation or open an issue in the repository.
+
 
 
