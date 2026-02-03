@@ -23,7 +23,8 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 │
 ├── 📁 docs/                             # Documentation
 │   ├── 📁 setup/                       # Setup guides
-│   │   └── ubuntu_22.04.md            # Ubuntu 22.04 installation guide
+│   │   ├── ubuntu_22.04.md            # Ubuntu 22.04 installation guide
+|   |   └── ubuntu_24.04.md            # Ubuntu 24.04 installation guide
 │   ├── architecture.md                 # System architecture documentation
 │   ├── checklist.md                    # Development and testing checklist
 │   └── simulation_notes.md             # Simulation setup notes
@@ -96,7 +97,8 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
    ```
 
 3. **Setup simulation environment:**
-   - Follow the guide in `docs/setup/ubuntu_22.04.md`
+   - Follow one of the guides in `docs/setup/`
+     ( 24.04LTS Version of Sİmulation is default )
    - Configure Gazebo models and worlds
 
 ## Usage
@@ -170,3 +172,4 @@ MIT
 ## Support
 
 For questions and support, please refer to the documentation or open an issue in the repository.
+
