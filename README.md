@@ -38,9 +38,10 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 │   │   ├── 📁 red_altigen/             # Red hexagon shaped objects
 │   │   ├── 📁 red_square/              # Red square objects
 │   │   ├── 📁 red_triangle/            # Red triangle objects
-│   │   └── 📁 long_cylinder/           # Cylindrical objects
+│   │   └── 📁 white_pole/              # Tall White Pole
 │   ├── 📁 worlds/                      # Gazebo world files
-│   │   └── iris_arducopter_runway.world # Main simulation world
+│   │   ├── iris_default.world #        # Default simulation world of Ardupilot
+│   │   └── iris_parkour.world          # Main simulation world
 │   └── how-to-use.md                   # Environment usage guide
 │
 ├── 📁 scenarios/                        # Mission scenarios
@@ -173,3 +174,4 @@ MIT
 ## Support
 
 For questions and support, please refer to the documentation or open an issue in the repository.
+
