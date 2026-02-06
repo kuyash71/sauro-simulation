@@ -54,6 +54,11 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 │   │   └── 📁 third/                   # Third mission scenario
 │   └── 📁 weather_degraded/            # Weather degraded scenarios
 │
+|── 📁 scripts/                        # Project Scripts
+|   ├── simulation_params_example      # Example of how "simulation_params" should be created on scripts directory
+|   ├── ardupilot_sitl                 # Ardupilot SITL + MavLink Starter Terminal Script
+|   └── sauro_gz                       # Gazebo World Starter Terminal Script
+|
 ├── 📁 src/                              # Source code
 │   ├── 📁 app/                         # Application entry point
 │   │   └── run.py                      # Main application runner

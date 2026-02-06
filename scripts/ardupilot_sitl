@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# -------------------------
+# Load Simulation params (optional)
+# -------------------------
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" && pwd)"
+CONFIG_LOCAL="${SCRIPT_DIR}/simulation_params"
+CONFIG_USER="${XDG_CONFIG_HOME:-$HOME/.config}/sauro/simulation_params"
+
+load_config() {
+  local f="$1"
+  [[ -f "$f" ]] || return 0
+  set -a
+  # shellcheck disable=SC1090
+  source "$f"
+  set +a
+}
+
+# Precedence: env vars > user config > local config
+load_config "$CONFIG_USER"
+load_config "$CONFIG_LOCAL"
+
+# -------------------------
+# Defaults (only if unset)
+# -------------------------
+ARDUPILOT_DIR="${ARDUPILOT_DIR:-$HOME/ardupilot}"
+VEHICLE="${VEHICLE:-ArduCopter}"
+FRAME="${FRAME:-gazebo-iris}"
+MODEL_FORMAT="${MODEL_FORMAT:-JSON}"
+
+ARDUPILOT_COPTER_DIR="${ARDUPILOT_DIR}/ArduCopter"
+SIM_VEHICLE="${ARDUPILOT_DIR}/Tools/autotest/sim_vehicle.py"
+
+echo "🚁 ArduPilot SITL (${VEHICLE} + Gazebo)"
+
+if [[ ! -d "${ARDUPILOT_COPTER_DIR}" ]]; then
+  echo "❌ ArduPilot directory not found: ${ARDUPILOT_COPTER_DIR}" >&2
+  echo "   Set ARDUPILOT_DIR in simulation_params or env." >&2
+  echo "   Example: ARDUPILOT_DIR=\$HOME/src/ardupilot ./ardupilot_sitl" >&2
+  exit 1
+fi
+
+if [[ ! -f "${SIM_VEHICLE}" ]]; then
+  echo "❌ sim_vehicle.py not found: ${SIM_VEHICLE}" >&2
+  echo "   Expected: \$ARDUPILOT_DIR/Tools/autotest/sim_vehicle.py" >&2
+  exit 1
+fi
+
+cd "${ARDUPILOT_COPTER_DIR}"
+
+# Detect MAVProxy
+MAVPROXY_ARGS=()
+if command -v mavproxy.py >/dev/null 2>&1; then
+  echo "✅ MAVProxy found → enabling console + map"
+else
+  echo "⚠️  MAVProxy not found → continuing with --no-mavproxy"
+  MAVPROXY_ARGS=(--no-mavproxy)
+fi
+
+exec "${SIM_VEHICLE}" \
+  -v "${VEHICLE}" \
+  -f "${FRAME}" \
+  --model "${MODEL_FORMAT}" \
+  --console \
+  --map \
+  "${MAVPROXY_ARGS[@]}"

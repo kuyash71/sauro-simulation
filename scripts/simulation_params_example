@@ -1,0 +1,32 @@
+# simulation_params.example
+# Copy to `simulation_params` and edit for your machine.
+# Format: bash-compatible KEY=VALUE lines.
+
+# -------------------------
+# Gazebo helper (sauro_gz)
+# -------------------------
+
+# Directory where your .sdf worlds live:
+WORLD_DIR="$HOME/gz_ws/src/ardupilot_gazebo/worlds"
+
+# Default shortcut worlds:
+DEFAULT_WORLD="iris_runway.sdf"
+SHOWCASE_WORLD="iris_showcase.sdf"
+PARKOUR_WORLD="iris_parkour.sdf"
+
+# gz sim flags:
+VERBOSE_LEVEL="4"   # used as -v4
+RUN_REALTIME="1"    # "1" => add -r, "0" => no -r
+
+
+# -------------------------
+# ArduPilot SITL helper
+# -------------------------
+
+# Your ArduPilot checkout root (contains Tools/ and ArduCopter/):
+ARDUPILOT_DIR="$HOME/ardupilot"
+
+# sim_vehicle settings:
+VEHICLE="ArduCopter"
+FRAME="gazebo-iris"
+MODEL_FORMAT="JSON"

@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# -------------------------
+# Load Simulation params (optional)
+# -------------------------
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" && pwd)"
+CONFIG_LOCAL="${SCRIPT_DIR}/simulation_params"
+CONFIG_USER="${XDG_CONFIG_HOME:-$HOME/.config}/sauro/simulation_params"
+
+load_config() {
+  local f="$1"
+  [[ -f "$f" ]] || return 0
+  # Export variables defined in the config file.
+  set -a
+  # shellcheck disable=SC1090
+  source "$f"
+  set +a
+}
+
+# Precedence: env vars > user config > local config
+load_config "$CONFIG_USER"
+load_config "$CONFIG_LOCAL"
+
+# -------------------------
+# Defaults (only if unset)
+# -------------------------
+WORLD_DIR="${WORLD_DIR:-}"
+
+DEFAULT_WORLD="${DEFAULT_WORLD:-iris_runway.sdf}"
+SHOWCASE_WORLD="${SHOWCASE_WORLD:-iris_showcase.sdf}"
+PARKOUR_WORLD="${PARKOUR_WORLD:-iris_parkour.sdf}"
+
+VERBOSE_LEVEL="${VERBOSE_LEVEL:-4}"   # used as -v4
+RUN_REALTIME="${RUN_REALTIME:-1}"    # used as -r
+
+print_help() {
+  cat <<HELP
+Usage:
+  sauro_gz -default        Run ${DEFAULT_WORLD}
+  sauro_gz -showcase       Run ${SHOWCASE_WORLD}
+  sauro_gz -parkour        Run ${PARKOUR_WORLD}
+  sauro_gz -help           Show this help and list worlds
+  sauro_gz <path/to.world> Run a specific .sdf file
+
+Config loading (highest priority first):
+  1) Environment variables (e.g. WORLD_DIR=... VERBOSE_LEVEL=2)
+  2) ${CONFIG_USER}
+  3) ${CONFIG_LOCAL}
+
+Notes:
+  - If WORLD_DIR is set, -default/-showcase/-parkour resolve from there.
+  - Example:
+      WORLD_DIR=/home/kuyash/gz_ws/src/ardupilot_gazebo/worlds sauro_gz -parkour
+HELP
+
+  if [[ -n "${WORLD_DIR}" && -d "${WORLD_DIR}" ]]; then
+    echo
+    echo "Available .sdf worlds in: ${WORLD_DIR}"
+    find "${WORLD_DIR}" -maxdepth 1 -type f -name "*.sdf" -printf "  - %f\n" | sort || true
+  fi
+}
+
+run_world() {
+  local target="$1"
+
+  # Resolve shorthand world names via WORLD_DIR if provided
+  if [[ -n "${WORLD_DIR}" && -d "${WORLD_DIR}" ]]; then
+    if [[ "${target}" != /* && "${target}" != ./* && "${target}" != ../* ]]; then
+      if [[ "${target}" == *.sdf ]]; then
+        target="${WORLD_DIR}/${target}"
+      fi
+    fi
+  fi
+
+  # Expand ~ manually
+  target="${target/#\~/${HOME}}"
+
+  if [[ ! -f "${target}" ]]; then
+    echo "Error: world file not found: ${target}" >&2
+    exit 2
+  fi
+  if [[ "${target}" != *.sdf ]]; then
+    echo "Error: expected a .sdf file, got: ${target}" >&2
+    exit 3
+  fi
+
+  cmd=(gz sim "-v${VERBOSE_LEVEL}")
+  if [[ "${RUN_REALTIME}" == "1" ]]; then
+    cmd+=(-r)
+  fi
+  cmd+=("${target}")
+
+  echo "Running: ${cmd[*]}"
+  exec "${cmd[@]}"
+}
+
+# -------------------------
+# Argument parsing
+# -------------------------
+if [[ $# -eq 0 ]]; then
+  echo "please insert gazebo world"
+  echo "Try: sauro_gz -help"
+  exit 1
+fi
+
+case "$1" in
+  -help|--help|-h)
+    print_help
+    exit 0
+    ;;
+  -default)
+    run_world "${DEFAULT_WORLD}"
+    ;;
+  -showcase)
+    run_world "${SHOWCASE_WORLD}"
+    ;;
+  -parkour)
+    run_world "${PARKOUR_WORLD}"
+    ;;
+  -v|--verbose)
+    shift
+    [[ $# -ge 1 ]] || { echo "Error: -v requires a level (e.g. 2,3,4)"; exit 4; }
+    VERBOSE_LEVEL="$1"
+    shift
+    [[ $# -ge 1 ]] || { echo "please insert gazebo world"; exit 1; }
+
+    case "$1" in
+      -default)  run_world "${DEFAULT_WORLD}" ;;
+      -showcase) run_world "${SHOWCASE_WORLD}" ;;
+      -parkour)  run_world "${PARKOUR_WORLD}" ;;
+      *)         run_world "$1" ;;
+    esac
+    ;;
+  *)
+    run_world "$1"
+    ;;
+esac
