@@ -1,37 +1,40 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <sdf version="1.6">
-  <model name="red_tringle">
-    <!-- Modelin sabit olması (düşmemesi) için static true -->
+  <model name="red_triangle">
     <static>true</static>
+
     <link name="link">
-      <!-- Modelin dünya içindeki varsayılan konumu ve yönü -->
-      <pose>0 0 0 0 0 0</pose>
-      <!-- Çarpışma (physics) şekli tanımı -->
-      <collision name="collision">
-        <geometry>
-          <mesh>
-            <uri>model://red_triangle/meshes/ucgen.obj</uri>
-            <scale>0.07 0.07 0.04</scale>
-          </mesh>
-        </geometry>
-      </collision>
-      <!-- Görsel (render) şekli tanımı -->
+
+      <!-- MESH -->
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://red_triangle/meshes/ucgen.obj</uri>
-            <scale>0.07 0.07 0.04</scale>
+            <uri>model://red_triangle/meshes/triangle.stl</uri>
+            <scale>1 1 1</scale>
           </mesh>
         </geometry>
+
+        <!-- MATERIAL -->
         <material>
-          <script>
-            <!-- Gazebo'nun standart malzeme kütüphanesini kullan -->
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Red</name>
-          </script>
+          <!-- Red on Ambient Lightning -->
+          <ambient>1 0 0 1</ambient>
+          <!-- Perfect Red on Camera -->
+          <diffuse>1 0 0 1</diffuse>
+          <!-- Prevents Reflections -->
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
+
+      <!-- COLLISION -->
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.15</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
     </link>
   </model>
 </sdf>
-

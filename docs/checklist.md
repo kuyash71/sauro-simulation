@@ -12,7 +12,7 @@
 - [x] Test: Get Camera Data via ROS2 node
 - [x] Test: Fly drone via MAV Terminal on Gazebo
 - [x] Test: Basic OpenCV Terminal Functions
-- [ ] Build: Create Models and World of the models in ~/environments/models file
+- [x] Build: Create Models and World of the models in ~/environments/models file
 - [ ] Test: Publish fake mission states (IDLE, SEARCH, FAILSAFE) over ROS2
 - [ ] Test: Publish fake telemetry data (pose, altitude, mode)
 - [ ] Test: Start testing the object detections for the models created on previous task.

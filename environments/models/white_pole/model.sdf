@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
-  <model name="blue_hexagon">
+  <model name="white_pole">
     <static>true</static>
 
     <link name="link">
@@ -9,17 +9,17 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://blue_hexagon/meshes/hexagon.stl</uri>
+            <uri>model://white_pole/meshes/pole.stl</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
 
         <!-- MATERIAL -->
         <material>
-          <!-- Blue on Ambient Lightning -->
-          <ambient>0 0 1 1</ambient>
-          <!-- Perfect Blue on Camera -->
-          <diffuse>0 0 1 1</diffuse>
+          <!-- White on Ambient Lightning -->
+          <ambient>1 1 1 1</ambient>
+          <!-- Perfect White on Camera -->
+          <diffuse>1 1 1 1</diffuse>
           <!-- Prevents Reflections -->
           <specular>0 0 0 1</specular>
         </material>
