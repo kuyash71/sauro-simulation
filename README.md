@@ -23,6 +23,7 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 │
 ├── 📁 docs/                             # Documentation
 │   ├── 📁 setup/                       # Setup guides
+        ├── python_venv_24.04          # Project Python venv Setup guide
 │   │   ├── ubuntu_22.04.md            # Ubuntu 22.04 installation guide
 |   |   └── ubuntu_24.04.md            # Ubuntu 24.04 installation guide
 │   ├── architecture.md                 # System architecture documentation
