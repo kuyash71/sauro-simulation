@@ -65,7 +65,7 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 │       │   ├── first_mission.py        # First mission implementation
 │       │   ├── second_mission.py       # Second mission implementation
 │       │   └── third_mission.py        # Third mission implementation
-│       └── 📁 state-machine/           # State machine management
+│       └── 📁 state_machine/           # State machine management
 │           ├── states.py               # State definitions
 │           └── state_machine.py        # State machine logic
 │
@@ -172,6 +172,3 @@ MIT
 ## Support
 
 For questions and support, please refer to the documentation or open an issue in the repository.
-
-
-
