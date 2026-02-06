@@ -40,9 +40,9 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 │   │   ├── 📁 red_triangle/            # Red triangle objects
 │   │   └── 📁 white_pole/              # Tall White Pole
 │   ├── 📁 worlds/                      # Gazebo world files
-│   │   ├── iris_default.world          # Default simulation world of Ardupilot
-│   │   ├── iris_parkour.world          # Main simulation world
-│   │   └── iris_showcase.world         # Showcase world for testing the Model size/color
+│   │   ├── iris_default.sdf            # Default simulation world of Ardupilot
+│   │   ├── iris_parkour.sdf            # Main simulation world
+│   │   └── iris_showcase.sdf           # Showcase world for testing the Model size/color
 │   └── how-to-use.md                   # Environment usage guide
 │
 ├── 📁 scenarios/                        # Mission scenarios
