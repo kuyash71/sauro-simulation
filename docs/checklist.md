@@ -42,7 +42,7 @@
 - [ ] Build: Create an algorithm to take the cargo (wont use gripper for this stage. Not in MVP product)
 - [ ] Test: Manual override from GCS during pickup/drop
 
-# PHASE 5: Handling the Possible Errors in thr Process
+# PHASE 5: Handling the Possible Errors in the Process
 
 - [ ] Test: Analyze possible errors in Process by simulating the sim on different conditions
 - [ ] Build: Create scenario for Communication loss on flight (scenarios/comm_loss)
