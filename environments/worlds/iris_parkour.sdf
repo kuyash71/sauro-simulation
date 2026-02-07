@@ -112,7 +112,7 @@
 
     <include>
       <uri>model://runway</uri>
-      <pose degrees="true">-29 545 0 0 0 363</pose>
+      <pose degrees="true">0 -665 0 0 0 180</pose>
     </include>
 
     <include>
@@ -125,41 +125,38 @@
 
 <include>
 <uri>model://blue_hexagon</uri>
-<pose>2 0 0 0 0 0</pose>
+<pose>125 245 0 0 0 0</pose>
 </include>
 
 <include>
 <uri>model://blue_square</uri>
-<pose>4 0 0 0 0 0</pose>
-</include>
-
-<include>
-<uri>model://blue_triangle</uri>
-<pose>6 0 0 0 0 0</pose>
+<pose>100 160 0 0 0 0</pose>
 </include>
 
 <!-- RED TARGETS -->
 
 <include>
-<uri>model://red_hexagon</uri>
-<pose>2 2 0 0 0 0</pose>
-</include>
-
-<include>
 <uri>model://red_square</uri>
-<pose>4 2 0 0 0 0</pose>
+<pose>90 270 0 0 0 0</pose>
 </include>
 
 <include>
 <uri>model://red_triangle</uri>
-<pose>6 2 0 0 0 0</pose>
+<pose>130 180 0 0 0 0</pose>
 </include>
 
 <!-- POLES -->
 
 <include>
+<name>white_pole_1</name>
 <uri>model://white_pole</uri>
-<pose>8 0 0 0 0 0</pose>
+<pose>60 140 0 0 0 0</pose>
+</include>
+
+<include>
+<name>white_pole_2</name>
+<uri>model://white_pole</uri>
+<pose>60 300 0 0 0 0</pose>
 </include>
 
   </world>
