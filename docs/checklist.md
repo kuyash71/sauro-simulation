@@ -13,9 +13,9 @@
 - [x] Test: Fly drone via MAV Terminal on Gazebo
 - [x] Test: Basic OpenCV Terminal Functions
 - [x] Build: Create Models and World of the models in ~/environments/models file
-- [ ] Test: Publish fake mission states (IDLE, SEARCH, FAILSAFE) over ROS2
-- [ ] Test: Publish fake telemetry data (pose, altitude, mode)
-- [ ] Test: Start testing the object detections for the models created on previous task.
+- [x] Test: Publish fake mission states (IDLE, SEARCH, FAILSAFE) over ROS2
+- [x] Test: Publish fake telemetry data (pose, altitude, mode)
+- [x] Test: Start testing the object detections for the models created on previous task.
 
 # PHASE 2: Drawing the "infinity" - First Mission of TEKNOFEST
 

@@ -62,20 +62,24 @@ This project is a simulation and control system developed for TEKNOFEST 25/26 Ro
 ├── 📁 src/                              # Source code
 │   ├── 📁 app/                         # Application entry point
 │   │   └── run.py                      # Main application runner
-│   └── 📁 core/                        # Core functionality modules
-│       ├── 📁 detection/               # Object detection algorithms
-│       │   ├── blue_detection.py       # Blue object detection
-│       │   ├── red_detection.py        # Red object detection
-│       │   └── white_detection.py      # White object detection
-│       ├── 📁 failsafe/                # Safety and failsafe mechanisms
-│       │   └── failsafe_example.py     # Failsafe implementation example
-│       ├── 📁 missions/                # Mission definitions
-│       │   ├── first_mission.py        # First mission implementation
-│       │   ├── second_mission.py       # Second mission implementation
-│       │   └── third_mission.py        # Third mission implementation
-│       └── 📁 state_machine/           # State machine management
-│           ├── states.py               # State definitions
-│           └── state_machine.py        # State machine logic
+│   ├── 📁 core/                        # Core functionality modules
+│   │   ├── 📁 detection/               # Object detection algorithms
+│   │   │   ├── blue_detection.py       # Blue object detection
+│   │   │   ├── red_detection.py        # Red object detection
+│   │   │   └── white_detection.py      # White object detection
+│   │   ├── 📁 failsafe/                # Safety and failsafe mechanisms
+│   │   │   └── failsafe_example.py     # Failsafe implementation example
+│   │   ├── 📁 missions/                # Mission definitions
+│   │   │   ├── first_mission.py        # First mission implementation
+│   │   │   ├── second_mission.py       # Second mission implementation
+│   │   │   └── third_mission.py        # Third mission implementation
+│   │   └── 📁 state_machine/           # State machine management
+│   │       ├── states.py               # State definitions
+│   │       └── state_machine.py        # State machine logic
+│   └── 📁 tests/                       # Application test Codes
+|       ├── colorDetect.py              # Color Detection Python Script for detecting pole and targets
+|       └── openCVraw.py                # OpenCV Raw Image Visualisation Script.
+|
 │
 ├── requirements.txt                     # Python dependencies
 └── README.md                           # This file
@@ -180,5 +184,3 @@ MIT
 ## Support
 
 For questions and support, please refer to the documentation or open an issue in the repository.
-
-
